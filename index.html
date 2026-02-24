@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy 6 Months Sejal ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    text-align:center;
+    background:black;
+    color:white;
+    overflow-x:hidden;
+}
+
+#intro{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+}
+
+#main{
+    display:none;
+    min-height:100vh;
+    padding:20px;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    animation:fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+h1{
+    font-size:38px;
+    margin-top:30px;
+}
+
+.message{
+    font-size:20px;
+    width:85%;
+    margin:auto;
+    line-height:1.6;
+    min-height:120px;
+}
+
+.gallery img{
+    width:260px;
+    margin:15px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    transition:0.5s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    background:white;
+    color:#ff4d6d;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.hearts{
+    position:fixed;
+    bottom:-10px;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+    <h1>Sejal ❤️</h1>
+    <button onclick="start()">Tap To Open Your Surprise 💕</button>
+</div>
+
+<div id="main">
+    <h1>Happy 6 Months Anniversary ❤️</h1>
+
+    <div class="message" id="typedText"></div>
+
+    <div class="gallery">
+        <img src="sejal1.jpg">
+        <img src="sejal2.jpg">
+    </div>
+</div>
+
+<audio id="bgMusic" src="music.mp3"></audio>
+
+<script>
+
+const text = `Dear Sejal,
+
+These 6 months with you have been magical.
+You are my happiness, my peace, my favorite person.
+Every moment with you feels special.
+
+I am so lucky to have you in my life.
+
+Forever yours,
+Kevin ❤️`;
+
+let i = 0;
+
+function typeEffect(){
+    if(i < text.length){
+        document.getElementById("typedText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect,40);
+    }
+}
+
+function start(){
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.display="block";
+    document.getElementById("bgMusic").play();
+    typeEffect();
+}
+
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.classList.add("hearts");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*2)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},5000);
+},300);
+
+</script>
+
+</body>
+</html>
